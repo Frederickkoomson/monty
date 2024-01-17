@@ -1,6 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_LINE_LENGTH 1024
 
@@ -26,6 +27,8 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         return EXIT_FAILURE;
     }
+
+    line = malloc(MAX_LINE_LENGTH); 
 
     while (fgets(line, MAX_LINE_LENGTH, file) != NULL)
     {
@@ -59,8 +62,5 @@ int main(int argc, char *argv[])
     free(line);
     fclose(file);
 
-    
-
     return EXIT_SUCCESS;
 }
-
