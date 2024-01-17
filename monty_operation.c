@@ -1,9 +1,10 @@
-/* monty_operations.c */
-
 #include "monty.h"
+#include <ctype.h>
+#include <stdio.h>
 
 void push(stack_t **stack, unsigned int line_number)
 {
+    char *arg;
     stack_t *new_node = malloc(sizeof(stack_t));
     if (!new_node)
     {
@@ -11,8 +12,9 @@ void push(stack_t **stack, unsigned int line_number)
         exit(EXIT_FAILURE);
     }
 
-    char *arg = strtok(NULL, " \t\n");
-    if (!arg || !isdigit(*arg) && *arg != '-')
+    arg = strtok(NULL, " \t\n");
+    if (!arg || (!isdigit(*arg) && *arg != '-'))
+
     {
         fprintf(stderr, "L%u: usage: push integer\n", line_number);
         free(new_node);
@@ -37,14 +39,15 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-    (void)line_number;
+    (void)line_number;  
 
-    stack_t *current = *stack;
-    while (current)
     {
-        printf("%d\n", current->n);
-        current = current->next;
+        stack_t *current = *stack;  
+
+        while (current != NULL)
+        {
+            printf("%d\n", current->n);
+            current = current->next;
+        }
     }
 }
-/* Add more functions as needed */
-
