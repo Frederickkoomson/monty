@@ -10,6 +10,7 @@
 
 #ifndef _SSIZE_T_DEFINED
 #define _SSIZE_T_DEFINED
+
 typedef long ssize_t;
 #endif
 
@@ -30,6 +31,7 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 /* Add more function prototypes as needed */
 
 #endif /* MONTY_H */
